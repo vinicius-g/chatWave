@@ -1,0 +1,11 @@
+{
+  "env": {
+    "ANTHROPIC_BASE_URL": "http://localhost:20128",
+    "ANTHROPIC_AUTH_TOKEN": "sk-7f625152f19d64eb-6a226d-af37ca7d",
+    "ANTHROPIC_MODEL": "dev",
+    "ANTHROPIC_DEFAULT_FABLE_MODEL": "dev",
+    "ANTHROPIC_DEFAULT_OPUS_MODEL": "dev",
+    "ANTHROPIC_DEFAULT_SONNET_MODEL": "dev",
+    "ANTHROPIC_DEFAULT_HAIKU_MODEL": "dev"
+  }
+}
