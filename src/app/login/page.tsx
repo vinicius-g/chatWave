@@ -18,18 +18,26 @@ export default function LoginPage() {
     setLoading(true);
     setError('');
 
-    const res = await signIn('credentials', {
-      redirect: false,
-      email,
-      password,
-    });
+    try {
+      const res = await signIn('credentials', {
+        redirect: false,
+        email: email.trim(),
+        password,
+      });
 
-    if (res?.error) {
-      setError(res.error);
-      setLoading(false);
-    } else {
+      if (res?.error || !res?.ok) {
+        setError(res?.error || 'Unable to sign in. Please try again.');
+        return;
+      }
+
       router.push('/chat');
       router.refresh();
+    } catch (error: unknown) {
+      setError(
+        error instanceof Error ? error.message : 'Unable to sign in. Please try again.'
+      );
+    } finally {
+      setLoading(false);
     }
   };
 

@@ -2,6 +2,8 @@ import { NextAuthOptions } from 'next-auth';
 import CredentialsProvider from 'next-auth/providers/credentials';
 import bcrypt from 'bcryptjs';
 import { prisma } from './prisma';
+import dotenv from 'dotenv';
+dotenv.config();
 
 export const authOptions: NextAuthOptions = {
   session: {
@@ -21,7 +23,7 @@ export const authOptions: NextAuthOptions = {
 
         const user = await prisma.user.findUnique({
           where: {
-            email: credentials.email.toLowerCase(),
+            email: credentials.email.trim().toLowerCase(),
           },
         });
 

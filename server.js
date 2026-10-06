@@ -1,10 +1,12 @@
 /* eslint-disable @typescript-eslint/no-require-imports */
+require('dotenv').config();
+
 const { createServer } = require('node:http');
 const next = require('next');
 const { Server } = require('socket.io');
 
 const dev = process.env.NODE_ENV !== 'production';
-const hostname = 'localhost';
+const hostname = process.env.DOMAIN || 'localhost';
 const port = parseInt(process.env.PORT || '3000', 10);
 
 if (!process.env.NEXTAUTH_URL) {
